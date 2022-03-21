@@ -14,7 +14,7 @@ holidays = ['2022-04-04','2022-04-05','2022-05-02','2022-06-03', '2022-09-09', '
 
 if today not in holidays:
 
-    url="https://stock.wearn.com/a50m.asp"
+    url="https://stock.wearn.com/b50.asp"
     page = requests.get(url)
 
     soup = BeautifulSoup(page.content, 'html.parser')
@@ -44,7 +44,7 @@ if today not in holidays:
             with conn:        
                 conn.ping()
                 with conn.cursor() as cursor:
-                    sql = 'INSERT INTO `fdi`(`code`,`buy`,`sell`,`amt`,`date`) VALUES (%s, %s, %s, %s, %s)'
+                    sql = 'REPLACE INTO `tru`(`code`,`buy`,`sell`,`amt`,`date`) VALUES (%s, %s, %s, %s, %s)'
                     cursor.execute(sql,(code, buyint, sellint, amtint, today))
                     conn.commit()
 
@@ -62,6 +62,6 @@ if today not in holidays:
             with conn:        
                 conn.ping()
                 with conn.cursor() as cursor:
-                    sql = 'INSERT INTO `fdi`(`code`,`buy`,`sell`,`amt`,`date`) VALUES (%s, %s, %s, %s, %s)'
+                    sql = 'REPLACE INTO `tru`(`code`,`buy`,`sell`,`amt`,`date`) VALUES (%s, %s, %s, %s, %s)'
                     cursor.execute(sql,(code, buyint, sellint, amtint, today))
                     conn.commit()
