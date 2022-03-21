@@ -14,7 +14,7 @@ holidays = ['2022-04-04','2022-04-05','2022-05-02','2022-06-03', '2022-09-09', '
 
 if today not in holidays:
 
-    url="https://stock.wearn.com/c50m.asp"
+    url="https://stock.wearn.com/c50.asp"
     page = requests.get(url)
 
     soup = BeautifulSoup(page.content, 'html.parser')
